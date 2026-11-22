@@ -4,9 +4,9 @@ Lee [AGENTS.md](AGENTS.md) antes de trabajar. Esta base fija los nombres que com
 
 ## Aplicación
 
-- Trabajamos en un único proyecto Maven con JavaFX, FXML y PostgreSQL. Roberto agrega la configuración del proyecto y la conexión JDBC siguiendo la práctica [JavaFX y PostgreSQL](https://uamvirtual.uam.edu.ni/grado/mod/resource/view.php?id=1004489).
+- Trabajamos en un único proyecto Maven con JavaFX, FXML, PostgreSQL e Hibernate ORM. Roberto agrega la configuración del proyecto y la conexión con Hibernate siguiendo las prácticas [Introducción a Hibernate ORM](https://uamvirtual.uam.edu.ni/grado/mod/resource/view.php?id=1034873) y [Arquitectura de Hibernate/JavaFX](https://uamvirtual.uam.edu.ni/grado/mod/resource/view.php?id=1034876).
 - Paquete raíz: clinica. Código en src/main/java/clinica y vistas en src/main/resources/clinica. Nombres de módulos: acceso, pacientes, citas, expediente y cobros.
-- Variables locales: CLINICA_DB_URL (por ejemplo jdbc:postgresql://localhost:5432/clinica), CLINICA_DB_USER y CLINICA_DB_PASSWORD. Configúralas en el entorno de ejecución. Usa consultas parametrizadas y datos ficticios.
+- Variables locales: CLINICA_DB_URL (por ejemplo jdbc:postgresql://localhost:5432/clinica), CLINICA_DB_USER y CLINICA_DB_PASSWORD. Configúralas en el entorno de ejecución (Hibernate las usará para conectarse a PostgreSQL). Usa consultas parametrizadas (HQL/JPQL) y datos ficticios.
 - Recepción abre Pacientes, Citas y Cobros. Médico abre su agenda y el Expediente. Pasa el ID de la cita al abrir Expediente o Cobros.
 
 ## PostgreSQL
