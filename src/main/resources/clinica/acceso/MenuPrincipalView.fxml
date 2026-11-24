@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="500.0" prefWidth="820.0" stylesheets="@clinica.css"
@@ -46,18 +47,20 @@
     </left>
 
     <center>
-        <VBox styleClass="content-area">
-            <padding>
-                <Insets bottom="24.0" left="24.0" right="24.0" top="24.0"/>
-            </padding>
-            <VBox spacing="10.0" styleClass="content-card">
+        <StackPane fx:id="contenedorCentro" styleClass="content-area">
+            <VBox fx:id="panelBienvenida">
                 <padding>
-                    <Insets bottom="22.0" left="22.0" right="22.0" top="22.0"/>
+                    <Insets bottom="24.0" left="24.0" right="24.0" top="24.0"/>
                 </padding>
-                <Label fx:id="lblModuloActual" styleClass="module-title" text="Bienvenido"/>
-                <Label fx:id="lblDetalle" styleClass="module-detail"
-                       text="Selecciona un módulo disponible en el menú izquierdo." wrapText="true"/>
+                <VBox spacing="10.0" styleClass="content-card">
+                    <padding>
+                        <Insets bottom="22.0" left="22.0" right="22.0" top="22.0"/>
+                    </padding>
+                    <Label fx:id="lblModuloActual" styleClass="module-title" text="Bienvenido"/>
+                    <Label fx:id="lblDetalle" styleClass="module-detail"
+                           text="Selecciona un módulo disponible en el menú izquierdo." wrapText="true"/>
+                </VBox>
             </VBox>
-        </VBox>
+        </StackPane>
     </center>
 </BorderPane>
