@@ -13,8 +13,8 @@
                concepto,
                importe
         FROM cobros
-        WHERE registrado_en >= $P{fecha}
-          AND registrado_en < ($P{fecha} + INTERVAL '1 day')
+        WHERE registrado_en >= CAST($P{fecha} AS DATE)
+          AND registrado_en < (CAST($P{fecha} AS DATE) + INTERVAL '1 day')
         ORDER BY registrado_en, id
     ]]></queryString>
 
