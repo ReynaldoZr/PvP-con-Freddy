@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" prefWidth="850" prefHeight="600"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="clinica.cobros.CobrosController">
+    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+    <Label text="Registro de cobros" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Label text="Concepto"/>
+    <TextField fx:id="txtConcepto" promptText="Ej. Consulta general"/>
+    <Label text="Importe (C$)"/>
+    <TextField fx:id="txtImporte" promptText="Ej. 350.00"/>
+    <Button fx:id="btnRegistrarCobro" text="Registrar cobro" onAction="#registrarCobro"/>
+    <Label fx:id="lblEstado" text="" wrapText="true"/>
+    <Label text="Cobros del día" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+    <HBox spacing="8">
+        <Label text="Fecha:"/>
+        <DatePicker fx:id="dpFecha" onAction="#cargarCobrosDelDia"/>
+    </HBox>
+    <TableView fx:id="tablaCobros" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colFechaHora" text="Fecha y hora" prefWidth="210"/>
+            <TableColumn fx:id="colConcepto" text="Concepto" prefWidth="420"/>
+            <TableColumn fx:id="colImporte" text="Importe" prefWidth="150"/>
+        </columns>
+    </TableView>
+    <Label fx:id="lblTotal" text="Total: C$ 0.00" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+</VBox>
