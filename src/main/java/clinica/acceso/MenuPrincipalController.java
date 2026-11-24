@@ -1,6 +1,8 @@
 package clinica.acceso;
 
 import clinica.citas.CitasController;
+import clinica.expediente.ExpedienteController;
+import clinica.cobros.CobrosController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -127,6 +129,28 @@ public class MenuPrincipalController {
                         usuarioActual,
                         this::abrirExpedienteParaCita,
                         this::abrirCobrosParaCita);
+                contenedorCentro.getChildren().setAll(vista);
+                return;
+            }
+            if (modulo == Modulo.EXPEDIENTE) {
+                if (citaId == null) {
+                    abrirModulo(Modulo.CITAS);
+                    return;
+                }
+                FXMLLoader loader = new FXMLLoader(MenuPrincipalController.class
+                        .getResource("/clinica/expediente/expediente.fxml"));
+                Parent vista = loader.load();
+                ExpedienteController controller = loader.getController();
+                controller.configurar(citaId, usuarioActual.getId());
+                contenedorCentro.getChildren().setAll(vista);
+                return;
+            }
+            if (modulo == Modulo.COBROS) {
+                FXMLLoader loader = new FXMLLoader(MenuPrincipalController.class
+                        .getResource("/clinica/cobros/cobros.fxml"));
+                Parent vista = loader.load();
+                CobrosController controller = loader.getController();
+                controller.configurar(citaId == null ? 0 : citaId);
                 contenedorCentro.getChildren().setAll(vista);
                 return;
             }

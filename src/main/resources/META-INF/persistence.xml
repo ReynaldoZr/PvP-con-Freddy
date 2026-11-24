@@ -7,6 +7,8 @@
         <class>clinica.pacientes.Paciente</class>
         <class>clinica.citas.Consultorio</class>
         <class>clinica.citas.Cita</class>
+        <class>clinica.expediente.Consulta</class>
+        <class>clinica.cobros.Cobro</class>
 
         <properties>
             <!-- Driver PostgreSQL; URL, usuario y clave se leen desde variables de entorno en JPAUtil -->

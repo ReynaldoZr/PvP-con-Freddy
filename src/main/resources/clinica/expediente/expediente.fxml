@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="8" prefWidth="1050" prefHeight="720"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="clinica.expediente.ExpedienteController">
+    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+    <Label text="Expediente médico" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <Label text="Motivo de consulta"/>
+    <TextArea fx:id="txtMotivo" promptText="Escriba el motivo de la consulta" prefRowCount="2" wrapText="true"/>
+    <Label text="Diagnóstico"/>
+    <TextArea fx:id="txtDiagnostico" promptText="Escriba el diagnóstico" prefRowCount="2" wrapText="true"/>
+    <Label text="Indicaciones"/>
+    <TextArea fx:id="txtIndicaciones" promptText="Escriba las indicaciones para el paciente" prefRowCount="2" wrapText="true"/>
+    <Button text="Guardar atención" onAction="#guardarAtencion"/>
+    <Label fx:id="lblEstado" text="" wrapText="true"/>
+    <Label text="Historial de atenciones" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+    <TableView fx:id="tablaHistorial" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="85"/>
+            <TableColumn fx:id="colHora" text="Hora" prefWidth="70"/>
+            <TableColumn fx:id="colMotivo" text="Motivo" prefWidth="150"/>
+            <TableColumn fx:id="colDiagnostico" text="Diagnóstico" prefWidth="170"/>
+            <TableColumn fx:id="colIndicaciones" text="Indicaciones" prefWidth="180"/>
+            <TableColumn fx:id="colUsuario" text="Editado por" prefWidth="130"/>
+            <TableColumn fx:id="colActualizado" text="Última edición" prefWidth="170"/>
+        </columns>
+    </TableView>
+</VBox>
