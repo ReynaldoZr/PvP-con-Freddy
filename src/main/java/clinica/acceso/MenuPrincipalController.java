@@ -41,28 +41,30 @@ public class MenuPrincipalController {
     private Button btnCobros;
 
     private final AccesoService accesoService = new AccesoService();
+    private final Map<Modulo, Button> botonesPorModulo = new EnumMap<>(Modulo.class);
     private Usuario usuarioActual;
 
     public void inicializarSesion(Usuario usuario) {
         this.usuarioActual = usuario;
-        lblUsuario.setText("Usuario: " + usuario.getNombre() + " (" + usuario.getUsuario() + ")");
-        lblRol.setText("Rol: " + usuario.getRol());
+        lblUsuario.setText(usuario.getNombre() + " (" + usuario.getUsuario() + ")");
+        lblRol.setText(usuario.getRol().name());
         aplicarPermisosPorRol(usuario.getRol());
     }
 
     private void aplicarPermisosPorRol(Rol rol) {
-        Map<Modulo, Button> botones = new EnumMap<>(Modulo.class);
-        botones.put(Modulo.PACIENTES, btnPacientes);
-        botones.put(Modulo.CITAS, btnCitas);
-        botones.put(Modulo.EXPEDIENTE, btnExpediente);
-        botones.put(Modulo.COBROS, btnCobros);
+        botonesPorModulo.clear();
+        botonesPorModulo.put(Modulo.PACIENTES, btnPacientes);
+        botonesPorModulo.put(Modulo.CITAS, btnCitas);
+        botonesPorModulo.put(Modulo.EXPEDIENTE, btnExpediente);
+        botonesPorModulo.put(Modulo.COBROS, btnCobros);
 
-        for (Map.Entry<Modulo, Button> entry : botones.entrySet()) {
+        for (Map.Entry<Modulo, Button> entry : botonesPorModulo.entrySet()) {
             boolean permitido = rol != null && rol.puedeAbrir(entry.getKey());
             Button boton = entry.getValue();
             boton.setVisible(permitido);
             boton.setManaged(permitido);
             boton.setDisable(!permitido);
+            boton.getStyleClass().remove("menu-button-active");
         }
     }
 
@@ -89,12 +91,23 @@ public class MenuPrincipalController {
     void abrirModulo(Modulo modulo) {
         try {
             accesoService.exigirPermiso(usuarioActual, modulo);
+            marcarBotonActivo(modulo);
             lblModuloActual.setText("Módulo: " + modulo.getTitulo());
             lblDetalle.setText("Acceso concedido para " + usuarioActual.getRol()
                     + ". Aquí se integrará la vista del módulo " + modulo.getTitulo() + ".");
         } catch (SecurityException ex) {
             lblModuloActual.setText("Acceso denegado");
             lblDetalle.setText(ex.getMessage());
+        }
+    }
+
+    private void marcarBotonActivo(Modulo moduloActivo) {
+        for (Map.Entry<Modulo, Button> entry : botonesPorModulo.entrySet()) {
+            Button boton = entry.getValue();
+            boton.getStyleClass().remove("menu-button-active");
+            if (entry.getKey() == moduloActivo) {
+                boton.getStyleClass().add("menu-button-active");
+            }
         }
     }
 

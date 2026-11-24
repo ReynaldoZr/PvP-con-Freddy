@@ -3,63 +3,61 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="460.0" prefWidth="760.0"
+<BorderPane prefHeight="500.0" prefWidth="820.0" stylesheets="@clinica.css"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="clinica.acceso.MenuPrincipalController">
 
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #f3f4f6;">
+        <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="topbar">
             <padding>
                 <Insets bottom="12.0" left="18.0" right="18.0" top="12.0"/>
             </padding>
-            <Label fx:id="lblUsuario" text="Usuario: -">
-                <font>
-                    <Font name="System Bold" size="14.0"/>
-                </font>
-            </Label>
-            <Label fx:id="lblRol" text="Rol: -" textFill="#374151"/>
+            <Label fx:id="lblUsuario" styleClass="topbar-user" text="Usuario: -"/>
+            <Label fx:id="lblRol" styleClass="topbar-role" text="ROL"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button onAction="#onCerrarSesion" text="Cerrar sesión"/>
+            <Button onAction="#onCerrarSesion" styleClass="logout-button" text="Cerrar sesión"/>
         </HBox>
     </top>
 
     <left>
-        <VBox prefWidth="190.0" spacing="10.0" style="-fx-background-color: #f9fafb;">
+        <VBox prefWidth="200.0" spacing="6.0" styleClass="sidebar">
             <padding>
-                <Insets bottom="16.0" left="14.0" right="14.0" top="16.0"/>
+                <Insets bottom="18.0" left="12.0" right="12.0" top="18.0"/>
             </padding>
-            <Label text="Módulos">
-                <font>
-                    <Font name="System Bold" size="13.0"/>
-                </font>
+            <Label styleClass="sidebar-heading" text="MÓDULOS">
+                <VBox.margin>
+                    <Insets bottom="6.0" left="8.0"/>
+                </VBox.margin>
             </Label>
-            <Separator/>
-            <Button fx:id="btnPacientes" maxWidth="Infinity" onAction="#onAbrirPacientes" text="Pacientes"/>
-            <Button fx:id="btnCitas" maxWidth="Infinity" onAction="#onAbrirCitas" text="Citas"/>
-            <Button fx:id="btnExpediente" maxWidth="Infinity" onAction="#onAbrirExpediente" text="Expediente"/>
-            <Button fx:id="btnCobros" maxWidth="Infinity" onAction="#onAbrirCobros" text="Cobros"/>
+            <Button fx:id="btnPacientes" maxWidth="Infinity" onAction="#onAbrirPacientes"
+                    styleClass="menu-button" text="Pacientes"/>
+            <Button fx:id="btnCitas" maxWidth="Infinity" onAction="#onAbrirCitas"
+                    styleClass="menu-button" text="Citas"/>
+            <Button fx:id="btnExpediente" maxWidth="Infinity" onAction="#onAbrirExpediente"
+                    styleClass="menu-button" text="Expediente"/>
+            <Button fx:id="btnCobros" maxWidth="Infinity" onAction="#onAbrirCobros"
+                    styleClass="menu-button" text="Cobros"/>
         </VBox>
     </left>
 
     <center>
-        <VBox alignment="TOP_LEFT" spacing="12.0">
+        <VBox styleClass="content-area">
             <padding>
                 <Insets bottom="24.0" left="24.0" right="24.0" top="24.0"/>
             </padding>
-            <Label fx:id="lblModuloActual" text="Bienvenido">
-                <font>
-                    <Font name="System Bold" size="18.0"/>
-                </font>
-            </Label>
-            <Label fx:id="lblDetalle" text="Selecciona un módulo disponible en el menú izquierdo."
-                   textFill="#374151" wrapText="true"/>
+            <VBox spacing="10.0" styleClass="content-card">
+                <padding>
+                    <Insets bottom="22.0" left="22.0" right="22.0" top="22.0"/>
+                </padding>
+                <Label fx:id="lblModuloActual" styleClass="module-title" text="Bienvenido"/>
+                <Label fx:id="lblDetalle" styleClass="module-detail"
+                       text="Selecciona un módulo disponible en el menú izquierdo." wrapText="true"/>
+            </VBox>
         </VBox>
     </center>
 </BorderPane>
