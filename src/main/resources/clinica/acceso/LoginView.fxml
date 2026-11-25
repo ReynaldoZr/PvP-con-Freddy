@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -21,8 +23,12 @@
             <Insets bottom="26.0" left="28.0" right="28.0" top="26.0"/>
         </padding>
 
-        <VBox spacing="3.0">
-            <Label styleClass="title-label" text="Sistema de Clínica"/>
+        <VBox alignment="CENTER" spacing="6.0">
+            <ImageView fitHeight="64.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../clinicare-logo-completo.png"/>
+                </image>
+            </ImageView>
             <Label styleClass="subtitle-label" text="Inicia sesión con tu usuario asignado"/>
         </VBox>
 
